@@ -12,10 +12,11 @@ module.exports = {
                 data.password,
                 data.number,
             ],
-            (error, result, fields) => {
+            (error, result) => {
                 if(error) {
-                callback(error)
+                    return callback(error);
                 }
+                return callback(null, result);
             }
         )
     }
