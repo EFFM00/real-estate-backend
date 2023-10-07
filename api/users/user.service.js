@@ -45,5 +45,20 @@ module.exports = {
                 return callback(null, result[0]);
             }
         )
-    }
+    },
+
+    getUserByEmail: (email, callback) => {
+        pool.query(
+            "SELECT id, firstName, lastName, gender, email, password, number FROM registration WHERE email = ?",
+            [email],
+            (error, result) => {
+                if(error) {
+                    return callback(error);
+                }
+                return callback(null, result[0]);
+            }
+        )
+    },
+
+
 }
