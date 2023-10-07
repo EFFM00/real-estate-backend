@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const userRouter = require("./api/users/user.router");
+const propertyRouter = require("./api/properties/properties.router");
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/api/users", userRouter)
+app.use("/api/properties", propertyRouter)
 
 
 app.listen(process.env.APP_PORT, () => {
