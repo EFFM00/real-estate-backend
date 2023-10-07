@@ -8,7 +8,7 @@ module.exports = {
         body.password = hashSync(body.password, salt);
         create(body, (error, result) => {
             if(error) {
-                console.error(err);
+                console.error(error);
                 return res.status(500).json({
                     success: 0,
                     message: "Database connection error",

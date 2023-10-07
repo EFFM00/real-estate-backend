@@ -2,9 +2,11 @@ const express = require("express");
 const dotenv = require("dotenv");
 const userRouter = require("./api/users/user.router");
 
-const app = express()
+const app = express();
 
 dotenv.config({path: ".env"})
+
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("HOLA")
