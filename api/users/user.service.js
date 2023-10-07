@@ -20,8 +20,6 @@ module.exports = {
             }
         )
     },
-
-    // getUsers: callback => {
     //     pool.query(
     //         "SELECT id, firstName, lastName, gender, email, number FROM registration",
     //         [],
