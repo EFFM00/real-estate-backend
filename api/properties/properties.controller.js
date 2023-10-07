@@ -1,7 +1,7 @@
 const { getAllProperties, getPropertyById } = require("./properties.service");
 
 module.exports = {
-    getAllProperties: (req, res) => {
+    getAllProperties: (_, res) => {
         getAllProperties((error, results) => {
             if(error) {
                 console.error(error);

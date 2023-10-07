@@ -9,8 +9,8 @@ dotenv.config({path: ".env"})
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("HOLA")
+app.get("/", (_, res) => {
+    res.send("API Real estates working")
 })
 
 app.use("/api/users", userRouter)
