@@ -5,6 +5,8 @@ const userRouter = require("./api/users/user.router");
 const propertyRouter = require("./api/properties/properties.router");
 const categoryRouter = require("./api/categories/category.router");
 const cityRouter = require("./api/cities/city.router");
+const operationRouter = require("./api/operations/operation.router");
+
 
 const app = express();
 
@@ -32,6 +34,7 @@ app.use("/api/users", userRouter);
 app.use("/api/properties", propertyRouter);
 app.use("/api/categories", categoryRouter);
 app.use("/api/cities", cityRouter);
+app.use("/api/operations", operationRouter);
 
 app.listen(process.env.APP_PORT, () => {
     console.log("Server listening on port " + process.env.APP_PORT);
