@@ -19,8 +19,8 @@ CREATE TABLE Categories(
 
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
     gender CHAR(1) NOT NULL,
     email VARCHAR(100) NOT NULL,
     password TEXT NOT NULL,
@@ -31,23 +31,23 @@ CREATE TABLE Properties(
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(40) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    mainImage TEXT NOT NULL,
+    main_image TEXT NOT NULL,
     description VARCHAR(255) NOT NULL,
     address VARCHAR(90) NOT NULL,
-    idOperation INT NOT NULL,
-    FOREIGN KEY (idOperation) REFERENCES Operations(id),
-    idCity INT NOT NULL,
-    FOREIGN KEY (idCity) REFERENCES Cities(id),
-    idCategory INT NOT NULL,
-    FOREIGN KEY (idCategory) REFERENCES Categories(id)
+    id_operation INT NOT NULL,
+    FOREIGN KEY (id_operation) REFERENCES Operations(id),
+    id_city INT NOT NULL,
+    FOREIGN KEY (id_city) REFERENCES Cities(id),
+    id_category INT NOT NULL,
+    FOREIGN KEY (id_category) REFERENCES Categories(id)
 );
 
 CREATE TABLE Images(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    urlImage TEXT NOT NULL,
+    url_image TEXT NOT NULL,
     description VARCHAR(50) NOT NULL,
-    idProperty INT NOT NULL,
-    FOREIGN KEY (idProperty) REFERENCES Properties(id)
+    id_property INT NOT NULL,
+    FOREIGN KEY (id_property) REFERENCES Properties(id)
 );
 
 
@@ -60,7 +60,7 @@ VALUES ("Buenos Aires", "Argentina");
 INSERT INTO Operations (type)
 VALUES ("sale"), ("rental");
 
-INSERT INTO Properties (title, price, mainImage, description, address, idOperation, idCity, idCategory)
+INSERT INTO Properties (title, price, main_image, description, address, id_operation, id_city, id_category)
 VALUES
     ('Casa en Palermo Soho', 220000, 'https://www.lanacion.com.ar/resizer/v2/la-casa-esta-ubicada-en-el-pasaje-santa-rosa-SZF7Y42BINEMVHFZHDKBHEXFSM.JPG?auth=8f2c5904ea5c8c5e4ea9ede8970b041e1134efdcdd287014380664f5d448f877&width=880&height=586&quality=70&smart=false', 'Encantadora casa en el corazón de Palermo Soho con amplio patio.', 'Palermo Soho, Calle Armenia 1200', 1, 1, 1),
     ('Apartamento en Recoleta', 190000, 'https://static.tokkobroker.com/pictures/6412092102677553208141555872740261574003896798070208790684419091291126417594.jpg', 'Moderno apartamento en el elegante barrio de Recoleta.', 'Recoleta, Avenida Alvear 800', 2, 1, 2),
