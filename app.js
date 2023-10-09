@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const userRouter = require("./api/users/user.router");
 const propertyRouter = require("./api/properties/properties.router");
+const categoryRouter = require("./api/categories/category.router");
 
 const app = express();
 
@@ -26,8 +27,9 @@ app.get("/", (_, res) => {
     res.send("API Real estates working")
 })
 
-app.use("/api/users", userRouter)
-app.use("/api/properties", propertyRouter)
+app.use("/api/users", userRouter);
+app.use("/api/properties", propertyRouter);
+app.use("/api/categories", categoryRouter);
 
 app.listen(process.env.APP_PORT, () => {
     console.log("Server listening on port " + process.env.APP_PORT);
