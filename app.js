@@ -15,7 +15,7 @@ app.use(sanitizer());
 app.use(cors());
 
 const corsOptions = {
-    origin: "http://localhost:5173/",
+    origin: "https://real-estate-cl7z.onrender.com/",
     methods: "GET,POST",
     credentials: true,
     optionsSuccessStatus: 204,
