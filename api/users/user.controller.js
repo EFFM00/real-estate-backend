@@ -7,20 +7,36 @@ module.exports = {
         const body = req.body;
         const salt = genSaltSync(10);
         body.password = hashSync(body.password, salt);
-        create(body, (error, result) => {
-        if (error) {
-            console.error(error);
-            return res.status(500).json({
-            success: 0,
-            message: "Database connection error",
-            });
-        }
 
-        return res.status(200).json({
-            success: 1,
-            data: result,
-        });
-        });
+        getUserByEmail(body.email, (error, results) => {
+            if(error) {
+                console.log(error);
+            }
+            if(!results) {
+                create(body, (error, result) => {
+                    if (error) {
+                        console.error(error);
+                        return res.status(500).json({
+                        success: 0,
+                        message: "Database connection error",
+                        });
+                    }
+            
+                    return res.status(200).json({
+                        success: 1,
+                        data: result,
+                    });
+                    }
+                );
+            } else {
+                return res.json({
+                    success: 0,
+                    data: "Email is already in use"
+                });
+            }
+        })
+
+
     },
     getUserById: (req, res) => {
         const id = req.params.id;
@@ -56,10 +72,9 @@ module.exports = {
             const result = compareSync(body.password, results.password);
             if(result) {
                 results.password = undefined;
-                const keyJwt = "50?G£7vgFv<y<1je:5)nH4^&Ug|4(I!{@24)"
                 const jwt = sign(
                     { result: results },
-                    process.env.KEY_JWT ?? keyJwt,
+                    process.env.KEY_JWT,
                     {
                         expiresIn: "1h",
                     });

@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getPropertyById: (req, res) => {
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
         getPropertyById(id, (error, result) => {
         if (error) {
             console.error(error);
