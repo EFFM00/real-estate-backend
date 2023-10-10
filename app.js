@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
+const sanitizer = require('req-sanitizer');
 const swaggerUi = require('swagger-ui-express')
 const swaggerFile = require('./swagger_output.json');
 const router = require("./router");
@@ -11,7 +11,7 @@ const app = express();
 dotenv.config({path: ".env"})
 
 app.use(express.json());
-
+app.use(sanitizer());
 app.use(cors());
 
 const corsOptions = {
