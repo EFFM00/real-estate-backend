@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 const corsOptions = {
-    origin: "https://miaplicacion.com",
+    origin: "https://real-estate-cl7z.onrender.com/",
     methods: "GET,POST",
     credentials: true,
     optionsSuccessStatus: 204,
