@@ -72,10 +72,9 @@ module.exports = {
             const result = compareSync(body.password, results.password);
             if(result) {
                 results.password = undefined;
-                const keyJwt = "50?G£7vgFv<y<1je:5)nH4^&Ug|4(I!{@24)"
                 const jwt = sign(
                     { result: results },
-                    process.env.KEY_JWT ?? keyJwt,
+                    process.env.KEY_JWT,
                     {
                         expiresIn: "1h",
                     });

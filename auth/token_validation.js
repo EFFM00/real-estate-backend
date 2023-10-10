@@ -5,8 +5,7 @@ module.exports = {
         let token = req.get("authorization");
         if(token){
             token = token.slice(7);
-            const keyJwt = "50?G£7vgFv<y<1je:5)nH4^&Ug|4(I!{@24)";
-            verify(token, process.env.KEY_JWT ?? keyJwt, (error, decoded) => {
+            verify(token, process.env.KEY_JWT, (error, decoded) => {
                 if(error) {
                     res.json({
                         success: 0,
