@@ -16,7 +16,20 @@ module.exports = {
 
     getPropertyById: (id, callback) => {
         pool.query(
-            "SELECT p.id, p.title, p.price, p.main_image, p.description, p.address, o.type AS operation, cat.name AS category, img.url_image, img.description FROM Properties p INNER JOIN Operations o ON p.id_operation = o.id INNER JOIN Cities c ON p.id_city = c.id INNER JOIN Categories cat ON p.id_category = cat.id INNER JOIN Images img ON p.id = img.id_property WHERE p.id = ?",
+            "SELECT p.id, p.title, p.price, p.main_image, p.description, p.address, o.type AS operation FROM Properties p INNER JOIN Operations o ON p.id_operation = o.id INNER JOIN Cities WHERE p.id = ?",
+            [id],
+            (error, result) => {
+                if(error) {
+                    return callback(error);
+                }
+                return callback(null, result[0]);
+            }
+        )
+    },
+
+    getImagesByPropertyId: (id, callback) => {
+        pool.query(
+            "SELECT i.id, i.url_image, i.description FROM Images i INNER JOIN Properties p ON i.id_property = p.id WHERE p.id = ?",
             [id],
             (error, result) => {
                 if(error) {
