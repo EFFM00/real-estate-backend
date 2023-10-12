@@ -1,4 +1,4 @@
-const { getAllProperties, getPropertyById, getPropertiesByCategory, getPropertiesByCity, getPropertiesByOperation } = require("./properties.service");
+const { getAllProperties, getPropertyById, getPropertiesByCategory, getPropertiesByCity, getPropertiesByOperation, getImagesByPropertyId } = require("./properties.service");
 
 module.exports = {
     getAllProperties: (_, res) => {
