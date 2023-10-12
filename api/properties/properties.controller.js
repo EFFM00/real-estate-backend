@@ -17,20 +17,40 @@ module.exports = {
     getPropertyById: (req, res) => {
         const id = parseInt(req.params.id);
         getPropertyById(id, (error, result) => {
-        if (error) {
-            console.error(error);
-            return;
-        }
-        if (!result) {
-            return res.json({
-            success: 0,
-            message: "Property not found",
-            });
-        }
-        return res.json({
-            success: 1,
-            data: result,
-        });
+            if (error) {
+                console.error(error);
+                return;
+            }
+            if (!result) {
+                return res.json({
+                success: 0,
+                message: "Property not found",
+                });
+            }
+
+            getImagesByPropertyId(id, (err, resp) => {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                if (!resp) {
+                    return res.json({
+                    success: 0,
+                    message: "Property not found",
+                    });
+                }
+
+                const resp_prop = {
+                    ...result,
+                    "images": resp
+                }
+
+                return res.json({
+                    success: 1,
+                    data: resp_prop,
+                });
+        
+            })
         });
     },
 
