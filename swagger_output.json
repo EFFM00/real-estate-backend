@@ -2,33 +2,17 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Rental estates API",
+    "title": "REST API",
     "description": ""
   },
-  "host": "https://api-real-estates.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["http"],
-  "securityDefinitions": {
-    "JWT": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header"
-    }
-  },
-  "tags": [
-    {
-      "name": "Users",
-      "description": "Operations related to users"
-    },
-    {
-      "name": "Properties",
-      "description": "Operations related to properties"
-    }
+  "schemes": [
+    "http"
   ],
   "paths": {
-    "/users/create_user": {
+    "/users/": {
       "post": {
-        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -38,6 +22,9 @@
               "type": "object",
               "properties": {
                 "password": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 }
               }
@@ -54,9 +41,8 @@
         }
       }
     },
-    "/users/get_user_by_id/{id}": {
+    "/users/{id}": {
       "get": {
-        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -70,17 +56,11 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/users/login": {
       "post": {
-        "tags": ["Users"],
         "description": "",
         "parameters": [
           {
@@ -108,23 +88,16 @@
     },
     "/properties/": {
       "get": {
-        "tags": ["Properties"],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/properties/{id}": {
       "get": {
-        "tags": ["Properties"],
         "description": "",
         "parameters": [
           {
@@ -138,17 +111,11 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/properties/get_by_category/{category}": {
       "get": {
-        "tags": ["Properties"],
         "description": "",
         "parameters": [
           {
@@ -162,17 +129,11 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/properties/get_by_city/{city}": {
       "get": {
-        "tags": ["Properties"],
         "description": "",
         "parameters": [
           {
@@ -186,17 +147,11 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/properties/get_by_operation/{operation}": {
       "get": {
-        "tags": ["Properties"],
         "description": "",
         "parameters": [
           {
@@ -210,60 +165,37 @@
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/categories/": {
       "get": {
-        "tags": ["Others"],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/cities/": {
       "get": {
-        "tags": ["Others"],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/operations/": {
       "get": {
-        "tags": ["Others"],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     }
   }
